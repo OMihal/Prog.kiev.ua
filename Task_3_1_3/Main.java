@@ -25,9 +25,15 @@ public class Main
 
             System.out.println("After deserialization: " + myClass2.toString());
 
-            if (myClass2.getCounter() != 0)// counter must be zero
+            if ((myClass1.getStrValue().equals(myClass2.getStrValue()) &&
+                (myClass1.getIndex() == myClass2.getIndex()) &&
+                (myClass2.getCounter() == 0))) // counter must be zero
             {
-                System.out.println("Test failed");
+                System.out.println("Test PASSED");
+            }
+            else
+            {
+                System.err.println("Test FAILED");
             }
         }
         catch(Exception e)
