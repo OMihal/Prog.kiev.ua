@@ -13,22 +13,12 @@ public class MyClass implements Serializable
     @Save
     private int index;
 
-    private int couner; // exclude from serialization
+    private int counter; // exclude from serialization
 
 
     public void setStrValue(String strValue)
     {
         this.strValue = strValue;
-    }
-
-    public void setIndex(int index)
-    {
-        this.index = index;
-    }
-
-    public void setCouner(int couner)
-    {
-        this.couner = couner;
     }
 
     public String getStrValue()
@@ -41,14 +31,23 @@ public class MyClass implements Serializable
         return index;
     }
 
-    public int getCouner()
+    public void setIndex(int index)
     {
-        return couner;
+        this.index = index;
+    }
+
+    public void setCounter(int counter)
+    {
+        this.counter = counter;
+    }
+    public int getCounter()
+    {
+        return counter;
     }
 
     @Override
     public String toString()
     {
-        return strValue + ", " + index + ", " + couner;
+        return strValue + ", " + index + ", " + counter;
     }
 }

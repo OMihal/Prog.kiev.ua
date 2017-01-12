@@ -13,7 +13,7 @@ public class Main
             MyClass myClass1 = new MyClass();
             myClass1.setStrValue("TestStringValue");
             myClass1.setIndex(3);
-            myClass1.setCouner(10);
+            myClass1.setCounter(10);
 
             System.out.println("Before serialization : " + myClass1.toString());
 
@@ -25,7 +25,7 @@ public class Main
 
             System.out.println("After deserialization: " + myClass2.toString());
 
-            if (myClass2.getCouner() != 0)// counter must be zero
+            if (myClass2.getCounter() != 0)// counter must be zero
             {
                 System.out.println("Test failed");
             }
