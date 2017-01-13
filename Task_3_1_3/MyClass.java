@@ -3,9 +3,8 @@ package ua.kiev.prog.omihal.homework.task_3_1_3;
 
 import java.io.Serializable;
 
-public class MyClass implements Serializable
+public class MyClass
 {
-    private static final long serialVersionUID = 1L;
 
     @Save
     private String strValue;
