@@ -29,13 +29,9 @@ public class Persons
         Set<Map.Entry<Integer, Person>> set = arr.entrySet();
         for (Map.Entry<Integer, Person> entry : set)
         {
-            Person p = entry.getValue();
-            if (p.getLastName().equalsIgnoreCase(person.getLastName()))
+            if (person.equals(entry.getValue()))
             {
-                if (p.getFirstName().equalsIgnoreCase(person.getFirstName()))
-                {
-                    return entry.getKey();
-                }
+                return entry.getKey();
             }
         }
         return -1;

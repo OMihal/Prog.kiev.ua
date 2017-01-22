@@ -25,4 +25,20 @@ public class Person {
     {
         return age;
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if ((obj != null) && (obj instanceof Person))
+        {
+            Person p = (Person)obj;
+            return ((p.age == age) &&
+                (p.firstName.equalsIgnoreCase(firstName)) &&
+                (p.lastName.equalsIgnoreCase(lastName)));
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
