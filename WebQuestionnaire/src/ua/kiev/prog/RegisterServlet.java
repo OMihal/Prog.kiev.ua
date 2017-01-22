@@ -17,8 +17,9 @@ public class RegisterServlet extends HttpServlet
 
         String fname = req.getParameter("fname");
         String lname = req.getParameter("lname");
+        String age = req.getParameter("age");
 
-        Person person = new Person(fname, lname);
+        Person person = new Person(fname, lname, Integer.parseInt(age));
         Persons persons = Persons.getInstance();
         int id = persons.addOrUpdate(person);
 

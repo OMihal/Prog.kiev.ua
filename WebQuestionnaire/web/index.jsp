@@ -11,7 +11,12 @@
     <br>
     First Name <input type="text" name="fname" required><br>
     Last  Name <input type="text" name="lname" required><br><br>
-    <input type="submit" value="Register">
+    Age <select name="age">
+    <% for (int i = 18; i <=100; i++) {%>
+        <option value="<%= i%>"><%= i%></option>
+    <%}%>
+    </select>
+    <hr><input type="submit" value="Register">
 </form>
 </body>
 </html>

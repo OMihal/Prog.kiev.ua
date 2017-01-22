@@ -51,6 +51,9 @@ public class StatisticsServlet extends HttpServlet {
         int persons = Persons.getInstance().getCount();
         sb.append(String.format("<p>Persons: %d</p>", persons));
 
+        int averageAge = Persons.getInstance().getAverageAge();
+        sb.append(String.format("<p>Average age: %d</p>", averageAge));
+
         final String template = "<p>Question %s: YES - %d, NO - %d</p>";
 
         Questions q = Questions.getInstance();
