@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
-        <servlet-name>AskForm</servlet-name>
-        <servlet-class>ua.kiev.prog.AskFormServlet</servlet-class>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>ua.kiev.prog.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AskForm</servlet-name>
-        <url-pattern>/ask</url-pattern>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Statistics</servlet-name>
@@ -17,6 +17,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Statistics</servlet-name>
-        <url-pattern>/statistics</url-pattern>
+        <url-pattern>/answer</url-pattern>
     </servlet-mapping>
 </web-app>

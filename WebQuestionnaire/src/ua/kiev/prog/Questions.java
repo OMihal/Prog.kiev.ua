@@ -18,6 +18,7 @@ public class Questions {
         arr.put(1, "First Question?");
         arr.put(2, "Second Question?");
         arr.put(3, "Third Question?");
+        arr.put(4, "Forth Question?");
     }
     Set<Map.Entry<Integer, String>> get(){
         return arr.entrySet();
