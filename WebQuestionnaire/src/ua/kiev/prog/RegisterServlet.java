@@ -21,7 +21,7 @@ public class RegisterServlet extends HttpServlet
 
         Person person = new Person(fname, lname, Integer.parseInt(age));
         Persons persons = Persons.getInstance();
-        int id = persons.addOrUpdate(person);
+        int id = persons.register(person);
 
         HttpSession session = req.getSession();
         session.setAttribute("personId", id);

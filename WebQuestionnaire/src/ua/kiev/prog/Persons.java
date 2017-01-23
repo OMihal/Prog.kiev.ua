@@ -11,6 +11,7 @@ public class Persons
     private AtomicInteger counter = new AtomicInteger();
     private Map<Integer, Person> arr =
         Collections.synchronizedMap(new HashMap<Integer, Person>());
+    private int averageAge;
 
     // singleton section
     private static Persons ourInstance = new Persons();
@@ -37,28 +38,33 @@ public class Persons
         return -1;
     }
 
-    public synchronized int addOrUpdate(Person person)
+    public synchronized int register(Person person)
     {
         int id = find(person);
         if (id == -1)
         {
             id = counter.incrementAndGet();
+            arr.put(id, person);
+            calculateAverageAge();
         }
-        arr.put(id, person);
         return id;
     }
     public int getCount()
     {
         return arr.size();
     }
-    public int getAverageAge()
+
+    public int getAverageAge() {
+        return averageAge;
+    }
+
+    private void calculateAverageAge()
     {
         int ageSum = 0;
         Set<Map.Entry<Integer, Person>> set = arr.entrySet();
-        for (Map.Entry<Integer, Person> entry : set)
-        {
+        for (Map.Entry<Integer, Person> entry : set) {
             ageSum += entry.getValue().getAge();
         }
-        return ageSum/arr.size();
+        averageAge = ageSum / arr.size();
     }
 }
