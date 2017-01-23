@@ -1,5 +1,6 @@
 package ua.kiev.prog;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class Questions {
         arr.put(4, "Forth Question?");
     }
     Set<Map.Entry<Integer, String>> get(){
-        return arr.entrySet();
+        return Collections.unmodifiableSet(arr.entrySet());
     }
     public int getCount(){
         return arr.size();

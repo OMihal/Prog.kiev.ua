@@ -9,8 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Persons
 {
     private AtomicInteger counter = new AtomicInteger();
-    private Map<Integer, Person> arr =
-        Collections.synchronizedMap(new HashMap<Integer, Person>());
+    private Map<Integer, Person> arr = new HashMap<Integer, Person>();
     private int averageAge;
 
     // singleton section
