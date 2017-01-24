@@ -6,8 +6,7 @@ public class Person {
     private int age;
 
 
-    public Person(String firstName, String lastName, int age)
-    {
+    public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -21,23 +20,18 @@ public class Person {
         return lastName;
     }
 
-    public int getAge()
-    {
+    public int getAge() {
         return age;
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if ((obj != null) && (obj.getClass() == Person.class))
-        {
-            Person p = (Person)obj;
+    public boolean equals(Object obj) {
+        if ((obj != null) && (obj.getClass() == Person.class)) {
+            Person p = (Person) obj;
             return ((p.age == age) &&
-                (p.firstName.equalsIgnoreCase(firstName)) &&
-                (p.lastName.equalsIgnoreCase(lastName)));
-        }
-        else
-        {
+                    (p.firstName.equalsIgnoreCase(firstName)) &&
+                    (p.lastName.equalsIgnoreCase(lastName)));
+        } else {
             return false;
         }
     }

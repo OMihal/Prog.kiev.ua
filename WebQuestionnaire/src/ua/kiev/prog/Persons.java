@@ -6,8 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Persons
-{
+public class Persons {
     private AtomicInteger counter = new AtomicInteger();
     private Map<Integer, Person> arr = new HashMap<Integer, Person>();
     private int averageAge;
@@ -15,41 +14,34 @@ public class Persons
     // singleton section
     private static Persons ourInstance = new Persons();
 
-    public static Persons getInstance()
-    {
+    public static Persons getInstance() {
         return ourInstance;
     }
 
-    private Persons()
-    {
+    private Persons() {
     }
 
-    private int find(Person person)
-    {
+    private int find(Person person) {
         Set<Map.Entry<Integer, Person>> set = arr.entrySet();
-        for (Map.Entry<Integer, Person> entry : set)
-        {
-            if (person.equals(entry.getValue()))
-            {
+        for (Map.Entry<Integer, Person> entry : set) {
+            if (person.equals(entry.getValue())) {
                 return entry.getKey();
             }
         }
         return -1;
     }
 
-    public synchronized int register(Person person)
-    {
+    public synchronized int register(Person person) {
         int id = find(person);
-        if (id == -1)
-        {
+        if (id == -1) {
             id = counter.incrementAndGet();
             arr.put(id, person);
             calculateAverageAge();
         }
         return id;
     }
-    public int getCount()
-    {
+
+    public int getCount() {
         return arr.size();
     }
 
@@ -57,8 +49,7 @@ public class Persons
         return averageAge;
     }
 
-    private void calculateAverageAge()
-    {
+    private void calculateAverageAge() {
         int ageSum = 0;
         Set<Map.Entry<Integer, Person>> set = arr.entrySet();
         for (Map.Entry<Integer, Person> entry : set) {

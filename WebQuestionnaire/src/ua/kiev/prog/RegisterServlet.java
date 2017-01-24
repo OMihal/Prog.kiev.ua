@@ -5,15 +5,13 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
 
-public class RegisterServlet extends HttpServlet
-{
+public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-        throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         final String template =
-            "<html><title>Prog.kiev.ua</title><body><h2>You registered as %s %s</h2>" +
-                "<h3>Your ID: %d</h3><br>%s</body></html>";
+                "<html><title>Prog.kiev.ua</title><body><h2>You registered as %s %s</h2>" +
+                        "<h3>Your ID: %d</h3><br>%s</body></html>";
 
         String fname = req.getParameter("fname");
         String lname = req.getParameter("lname");
@@ -33,16 +31,14 @@ public class RegisterServlet extends HttpServlet
         pw.write(out);
     }
 
-    private String buildQuestions()
-    {
+    private String buildQuestions() {
         final String radioTempl =
-            "<input type=\"radio\" name=\"q%d\" value=\"%s\">%s";
+                "<input type=\"radio\" name=\"q%d\" value=\"%s\">%s";
         StringBuilder sb = new StringBuilder();
         Questions questions = Questions.getInstance();
         sb.append("<form name=\"qform\" action=\"\\answer\" method=\"POST\">");
         Set<Map.Entry<Integer, String>> map = questions.get();
-        for (Map.Entry<Integer, String> entry : map)
-        {
+        for (Map.Entry<Integer, String> entry : map) {
             int num = entry.getKey();
             sb.append("<hr><p><h3>");
             sb.append(num + ". " + entry.getValue() + "</h3><br>");
