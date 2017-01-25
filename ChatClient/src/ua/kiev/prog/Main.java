@@ -1,4 +1,4 @@
-package com.company;
+package ua.kiev.prog;
 
 import java.io.IOException;
 import java.util.Scanner;

@@ -1,19 +1,19 @@
-package com.company;
+package ua.kiev.prog;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class JsonMessages {
-    private final List<com.company.Message> list;
+    private final List<Message> list;
 
-    public JsonMessages(List<com.company.Message> sourceList, int fromIndex) {
+    public JsonMessages(List<Message> sourceList, int fromIndex) {
         this.list = new ArrayList<>();
         for (int i = fromIndex; i < sourceList.size(); i++)
             list.add(sourceList.get(i));
     }
 
-    public List<com.company.Message> getList() {
+    public List<Message> getList() {
         return Collections.unmodifiableList(list);
     }
 }
