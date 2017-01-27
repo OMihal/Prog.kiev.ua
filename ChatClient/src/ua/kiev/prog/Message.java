@@ -11,14 +11,33 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class Message {
+	private int type;
 	private Date date = new Date();
 	private String from;
 	private String to;
 	private String text;
 
 	public Message(String from, String text) {
+		this.type = MessageType.SIMPLE;
 		this.from = from;
 		this.text = text;
+	}
+
+	public Message(String from, String to, String text) {
+		this.type = MessageType.SIMPLE;
+		this.from = from;
+		this.to = to;
+		this.text = text;
+	}
+
+	public Message(int type, String from, String text) {
+		this.type = type;
+		this.from = from;
+		this.text = text;
+	}
+	public Message(int type, String from) {
+		this.type = type;
+		this.from = from;
 	}
 
 	public String toJSON() {

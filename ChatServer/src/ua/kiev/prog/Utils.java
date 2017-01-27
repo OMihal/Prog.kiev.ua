@@ -1,15 +1,16 @@
 package ua.kiev.prog;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 public class Utils {
-    private static final String URL = "http://127.0.0.1";
-    private static final int PORT = 8080;
-
-    public static String getURL() {
-        return URL + ":" + PORT;
+    public static byte[] requestBodyToArray(HttpServletRequest req) throws IOException {
+        InputStream is = req.getInputStream();
+        return inputStreamToArray(is);
     }
 
     public static byte[] inputStreamToArray(InputStream is) throws IOException {
@@ -24,5 +25,4 @@ public class Utils {
 
         return bos.toByteArray();
     }
-
 }

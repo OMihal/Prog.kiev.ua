@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class Message {
+	private int type;
 	private Date date = new Date();
 	private String from;
 	private String to;
@@ -54,7 +55,11 @@ public class Message {
 			os.close();
 		}
 	}
-	
+
+	public int getType() {
+		return type;
+	}
+
 	public Date getDate() {
 		return date;
 	}
