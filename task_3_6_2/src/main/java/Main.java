@@ -68,7 +68,6 @@ public class Main {
                 }
             }
             conn.commit();
-            conn.setAutoCommit(true);
             System.out.println("Created " + flats.size() + " records in database!");
         } catch (SQLException ex) {
             conn.rollback();

@@ -10,104 +10,49 @@ public class Main {
 
             try (Connection conn = DriverManager.getConnection(props.getUrl(), props.getUser(), props.getPassword())) {
 
-                createStructure(conn);
-                insertData(conn);
-                deleteStructure(conn);
+                Structure.create(conn);
+                System.out.println("DB structure created");
+
+                // create new customer
+                Customer customer = Customer.create(conn, "2464569871", "Petrov Ivan");
+                System.out.println("Created customer:\n" + customer);
+
+                // add new products
+                Product[] products = new Product[]{
+                        Product.create(conn, Category.FOOD, 1, "Tomatto", 2.50),
+                        Product.create(conn, Category.SHOES, 345, "Boots", 47.80),
+                        Product.create(conn, Category.WEAR, 25, "Raincoat", 100),
+                        Product.create(conn, Category.ELECTRONICS, 45678399, "Samsung TV", 800),
+                        Product.create(conn, Category.AUTO_PARTS, 123456789, "VW TDI 2.0 Engine", 4000),
+                };
+                System.out.println("Products inserted:");
+                for (Product p : products) System.out.println(p);
+
+                // set quantity of products
+                List<ProductQuantity> productList = new ArrayList<>();
+                productList.add(new ProductQuantity(products[0], 10));
+                productList.add(new ProductQuantity(products[1], 1));
+                productList.add(new ProductQuantity(products[2], 2));
+                productList.add(new ProductQuantity(products[3], 50));
+
+                // create order
+                String orderNumber = "20170201/587";
+                Order newOrder = Order.create(conn, orderNumber, customer, productList);
+                System.out.println("Order created with id = " + newOrder.getId());
+
+                // get order from DB
+                Order order = Order.getByNumber(conn, orderNumber);
+                System.out.println("OrderNo = " + order.getNumber());
+                System.out.println("Customer = " + order.getCustomer());
+                System.out.println("Product positions = " + order.getProducts().size());
+                for (ProductQuantity pq : order.getProducts()) System.out.println(pq);
+                System.out.println("Total price = " + order.getOrderPrice());
+
+                Structure.destroy(conn);
+                System.out.println("DB structure destroyed");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static void createStructure(Connection conn) throws SQLException {
-        try (Statement st = conn.createStatement()) {
-            st.execute("DROP TABLE IF EXISTS links");
-            st.execute("DROP TABLE IF EXISTS orders");
-            st.execute("DROP TABLE IF EXISTS customers");
-            st.execute("DROP TABLE IF EXISTS products");
-
-            // products
-            st.execute("CREATE TABLE products (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,  name VARCHAR(100) NOT NULL, " +
-                    "description VARCHAR(255) NOT NULL, price DOUBLE NOT NULL)");
-
-            // customers
-            st.execute("CREATE TABLE customers (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,  name VARCHAR(100) NOT NULL, " +
-                    "address VARCHAR(100) NOT NULL)");
-
-            // orders
-            st.execute("CREATE TABLE orders (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, date DATE NOT NULL, customer INT NOT NULL)");
-
-            // links
-            st.execute("CREATE TABLE links (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, orderId INT NOT NULL, productId INT NOT NULL)");
-        }
-        System.out.println("Tables created");
-    }
-
-    private
-
-//    private static void insertData(Connection conn) throws SQLException {
-//        FlatCollection col = FlatCollection.getInstance();
-//        Collection<Flat> flats = col.getFlats();
-//
-//        String sql = "INSERT INTO flats (region, address, square, rooms, price) VALUES (?, ?, ?, ?, ?)";
-//
-//        conn.setAutoCommit(false);
-//        try {
-//            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-//                for (Flat f : flats) {
-//                    ps.setString(1, f.getRegion());
-//                    ps.setString(2, f.getAddress());
-//                    ps.setDouble(3, f.getSquare());
-//                    ps.setInt(4, f.getRooms());
-//                    ps.setDouble(5, f.getPrice());
-//                    ps.executeUpdate();
-//                }
-//            }
-//            conn.commit();
-//            conn.setAutoCommit(true);
-//            System.out.println("Created " + flats.size() + " records in database!");
-//        } catch (SQLException ex) {
-//            conn.rollback();
-//            throw ex;
-//        }
-//    }
-
-//    private static Collection<Flat> getByParameters(Connection conn, String region, Integer rooms, Double minPrice,
-//                                                    Double maxPrice) throws SQLException {
-//        String sql = "Select region, address, square, rooms, price from flats where 1 = 1";
-//
-//        if (region != null)
-//            sql += " and region = '" + region + "'";
-//
-//        if (rooms != null)
-//            sql += " and rooms = " + rooms;
-//
-//        if (minPrice != null)
-//            sql += " and price >= " + minPrice;
-//
-//        if (maxPrice != null)
-//            sql += " and price <= " + maxPrice;
-//
-//        List<Flat> flats = new ArrayList<>();
-//        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-//            try (ResultSet rs = ps.executeQuery()) {
-//                ResultSetMetaData md = rs.getMetaData();
-//
-//                while (rs.next()) {
-//                    flats.add(new Flat(rs.getString(1), rs.getString(2), rs.getDouble(3), rs.getInt(4), rs.getDouble(5)));
-//                }
-//            }
-//        }
-//        return flats;
-//    }
-
-    private static void deleteStructure(Connection conn) throws SQLException {
-        try (Statement st = conn.createStatement()) {
-            st.execute("DROP TABLE IF EXISTS links");
-            st.execute("DROP TABLE IF EXISTS orders");
-            st.execute("DROP TABLE IF EXISTS customers");
-            st.execute("DROP TABLE IF EXISTS products");
-        }
-        System.out.println("Tables droped");
     }
 }
