@@ -1,4 +1,4 @@
-package market;
+package domain;
 
 public class Category {
     public static final int FOOD = 1;

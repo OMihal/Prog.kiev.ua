@@ -1,4 +1,4 @@
-package market.db.mysql;
+package mysql;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,10 +1,9 @@
-package market.db.mysql;
+package mysql;
 
-import market.db.StructureDAO;
+import dao.StructureDAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 class MySqlStructureDAO implements StructureDAO {
     private Connection connection;

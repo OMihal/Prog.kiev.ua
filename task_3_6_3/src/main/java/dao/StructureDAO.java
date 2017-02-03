@@ -1,4 +1,4 @@
-package market.db;
+package dao;
 
 import java.sql.SQLException;
 

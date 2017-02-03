@@ -1,6 +1,6 @@
-package market.db;
+package dao;
 
-import market.Product;
+import domain.Product;
 
 import java.sql.SQLException;
 

@@ -1,6 +1,4 @@
-package market;
-
-import java.sql.*;
+package domain;
 
 public class Product {
     private int id;

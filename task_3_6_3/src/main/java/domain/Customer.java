@@ -1,9 +1,4 @@
-package market;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+package domain;
 
 public class Customer {
     private int id;

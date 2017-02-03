@@ -1,6 +1,6 @@
-package market.db;
+package dao;
 
-import market.db.mysql.MySqlDAOFactory;
+import mysql.MySqlDAOFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;

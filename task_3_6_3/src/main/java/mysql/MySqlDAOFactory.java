@@ -1,6 +1,6 @@
-package market.db.mysql;
+package mysql;
 
-import market.db.*;
+import dao.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

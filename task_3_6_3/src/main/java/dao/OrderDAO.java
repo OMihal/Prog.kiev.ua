@@ -1,10 +1,9 @@
-package market.db;
+package dao;
 
-import market.Customer;
-import market.Order;
-import market.ProductQuantity;
+import domain.Customer;
+import domain.Order;
+import domain.ProductQuantity;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Collection;
 

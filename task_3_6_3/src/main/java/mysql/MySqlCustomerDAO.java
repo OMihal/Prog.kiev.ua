@@ -1,7 +1,7 @@
-package market.db.mysql;
+package mysql;
 
-import market.Customer;
-import market.db.CustomerDAO;
+import domain.Customer;
+import dao.CustomerDAO;
 
 import java.sql.*;
 

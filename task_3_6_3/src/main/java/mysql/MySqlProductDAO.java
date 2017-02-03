@@ -1,7 +1,7 @@
-package market.db.mysql;
+package mysql;
 
-import market.Product;
-import market.db.ProductDAO;
+import domain.Product;
+import dao.ProductDAO;
 
 import java.sql.*;
 

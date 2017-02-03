@@ -1,12 +1,12 @@
-package market.db.mysql;
+package mysql;
 
-import market.Customer;
-import market.Order;
-import market.Product;
-import market.ProductQuantity;
-import market.db.CustomerDAO;
-import market.db.OrderDAO;
-import market.db.ProductDAO;
+import domain.Customer;
+import domain.Order;
+import domain.Product;
+import domain.ProductQuantity;
+import dao.CustomerDAO;
+import dao.OrderDAO;
+import dao.ProductDAO;
 
 import java.sql.*;
 import java.util.ArrayList;

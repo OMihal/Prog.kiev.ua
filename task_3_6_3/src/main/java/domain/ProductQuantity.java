@@ -1,4 +1,4 @@
-package market;
+package domain;
 
 public class ProductQuantity {
     private Product product;

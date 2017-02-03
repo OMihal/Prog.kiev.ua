@@ -1,6 +1,5 @@
-package market;
-
-import market.db.*;
+import dao.*;
+import domain.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class Main {
                 try {
                     orderId = orderDAO.insertOrder("20170201/587", customer, productList);
                     con.commit();
-                    System.out.println("market.Order created with id = " + orderId);
+                    System.out.println("domain.Order created with id = " + orderId);
                 } catch (SQLException ex) {
                     con.rollback();
                     throw ex;
@@ -54,8 +53,8 @@ public class Main {
                 // get order from DB
                 Order order = orderDAO.findOrder(orderId, customerDAO, productDAO);
                 System.out.println("OrderNo = " + order.getNumber());
-                System.out.println("market.Customer = " + order.getCustomer());
-                System.out.println("market.Product positions = " + order.getProducts().size());
+                System.out.println("domain.Customer = " + order.getCustomer());
+                System.out.println("domain.Product positions = " + order.getProducts().size());
                 for (ProductQuantity pq : order.getProducts()) System.out.println(pq);
                 System.out.println("Total price = " + order.getOrderPrice());
 
