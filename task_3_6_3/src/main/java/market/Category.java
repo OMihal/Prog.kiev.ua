@@ -1,3 +1,5 @@
+package market;
+
 public class Category {
     public static final int FOOD = 1;
     public static final int WEAR = 2;
