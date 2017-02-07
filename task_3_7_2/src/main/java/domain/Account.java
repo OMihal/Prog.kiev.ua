@@ -5,11 +5,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Accounts")
-//@NamedQueries({
-//        @NamedQuery(name = "Accounts.findByClient",
-//                query = "SELECT a FROM Account a WHERE client = :client"),
-//        @NamedQuery(name = "Account.findByClientAndCurrency",
-//                query = "SELECT a FROM Account a WHERE client = :client and currency = :currency")})
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,12 +23,6 @@ public class Account {
 
     @Column(nullable = false)
     private double balance;
-
-//    @OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.EAGER, mappedBy = "debit")
-//    private Set<Transaction> debit_transactions;
-//
-//    @OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.EAGER, mappedBy = "credit")
-//    private Set<Transaction> credit_transactions;
 
     public Account() {
     }
