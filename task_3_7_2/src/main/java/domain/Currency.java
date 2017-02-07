@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "Currencies")
 public class Currency {
     @Id
-    @Column(name = "code", unique = true)
+    @Column(name = "id", unique = true)
     private int id;
 
     @Column(name = "short_name", nullable = false)
