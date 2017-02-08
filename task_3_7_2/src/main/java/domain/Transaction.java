@@ -18,15 +18,15 @@ public class Transaction {
     private Account credit;
 
     @Column(nullable = false)
-    private double summa;
+    private double sum;
 
     public Transaction() {
     }
 
-    public Transaction(Account debit, Account credit, double summa) {
+    public Transaction(Account debit, Account credit, double sum) {
         this.debit = debit;
         this.credit = credit;
-        this.summa = summa;
+        this.sum = sum;
     }
 
     public long getId() {
@@ -41,7 +41,7 @@ public class Transaction {
         return credit;
     }
 
-    public double getSumma() {
-        return summa;
+    public double getSum() {
+        return sum;
     }
 }

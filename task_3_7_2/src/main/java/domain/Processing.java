@@ -16,20 +16,20 @@ public class Processing {
         em.clear();
         Query query = em.createNamedQuery("Client.byTaxNumber", Client.class);
         query.setParameter("taxNumber", taxNumber);
-        List<Client> clients = query.getResultList();
-        if (clients.isEmpty())
+        Client client = (Client)query.getSingleResult();
+        if (client == null)
             throw new PersistenceException("Client not found!");
-        return clients.get(0);
+        return client;
     }
     private Rate getRate(Currency first, Currency second) throws PersistenceException {
         em.clear();
         Query query = em.createNamedQuery("Rate.find", Rate.class);
         query.setParameter("first", first);
         query.setParameter("second", second);
-        List<Rate> rates = query.getResultList();
-        if (rates.isEmpty())
+        Rate rate = (Rate)query.getSingleResult();
+        if (rate == null)
             throw new PersistenceException("Rate not found!");
-        return rates.get(0);
+        return rate;
     }
     public void addCacheToAccount(Account account, double sum) throws PersistenceException {
         em.clear();
