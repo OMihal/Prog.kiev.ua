@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -59,18 +61,22 @@ public class MyController {
         else
             return "index";
     }
+
     @RequestMapping(value = "/all_photos", method = RequestMethod.POST)
     public String onAllView(Model model) {
         Set<Long> ids = photos.keySet();
         model.addAttribute("photo_ids", ids);
         return "list";
     }
+
     @RequestMapping(value = "/delete_selected", method = RequestMethod.POST)
-    public String onDeleteSelected(@RequestParam("selected_ids") long[] ids) {
-        for (long id : ids){
-            photos.remove(id);
+    public ResponseEntity<Void> delete(@RequestParam(value = "toDelete[]", required = false) long[] toDelete) {
+        if (toDelete != null) {
+            for (long id : toDelete) {
+                photos.remove(id);
+            }
         }
-        return "list";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     private ResponseEntity<byte[]> photoById(long id) {
